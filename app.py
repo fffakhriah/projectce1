@@ -60,11 +60,17 @@ if run_btn:
     """)
 
     # Convergence Curve
-        fig, ax = plt.subplots(figsize=(4, 3))
-        ax.plot(history)
+        fig, ax = plt.subplots(figsize=(5, 2.5))
+
+        ax.plot(history, linewidth=2)
+        
+        ax.set_title("ACO Convergence Curve", fontsize=12)
         ax.set_xlabel("Iteration", fontsize=10)
         ax.set_ylabel("Fitness Value", fontsize=10)
-        ax.set_title("ACO Convergence Curve", fontsize=12)
         
-    st.pyplot(fig)
+        ax.tick_params(axis='both', labelsize=9)
+        
+        plt.tight_layout()
+        st.pyplot(fig)
+
 
