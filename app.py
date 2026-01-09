@@ -59,18 +59,11 @@ if run_btn:
     **Fitness Value:** {fitness:.2f}
     """)
 
-    # Convergence Curve
-        fig, ax = plt.subplots(figsize=(4, 2.2))
+    # Convergence Curve (KECIL & NGAM)
+    fig, ax = plt.subplots(figsize=(6, 3))
+    ax.plot(history)
+    ax.set_xlabel("Iteration")
+    ax.set_ylabel("Fitness Value")
+    ax.set_title("ACO Convergence Curve")
 
-        ax.plot(history, linewidth=2)
-        
-        ax.set_title("ACO Convergence Curve", fontsize=12)
-        ax.set_xlabel("Iteration", fontsize=10)
-        ax.set_ylabel("Fitness Value", fontsize=10)
-        
-        ax.tick_params(axis='both', labelsize=9)
-        
-        plt.tight_layout()
-        st.pyplot(fig)
-
-
+    st.pyplot(fig)
