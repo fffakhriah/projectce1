@@ -60,7 +60,7 @@ if run_btn:
     """)
 
     # Convergence Curve
-        fig, ax = plt.subplots(figsize=(4, 2.4))
+        fig, ax = plt.subplots(figsize=(4, 2.4)
         ax.plot(history)
         ax.set_xlabel("Iteration", fontsize=10)
         ax.set_ylabel("Fitness Value", fontsize=10)
