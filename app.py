@@ -6,10 +6,10 @@ from aco_single import ACO_Single
 from aco_multi import ACO_Multi
 
 # =========================
-# PAGE TITLE
+# PAGE SETUP
 # =========================
 st.set_page_config(layout="wide")
-st.title("🎬 Cinema Ticket Pricing Optimization using ACO")
+st.title("🎬 Cinema Ticket Pricing Optimization using Ant Colony Optimization")
 
 # =========================
 # LOAD DATA
@@ -18,7 +18,7 @@ data = pd.read_csv("cinema_ticket_pricing_clean.csv")
 data.columns = data.columns.str.lower().str.replace(" ", "_")
 
 # =========================
-# SIDEBAR (LEFT)
+# SIDEBAR
 # =========================
 with st.sidebar:
     st.header("⚙️ Optimization Settings")
@@ -41,31 +41,26 @@ with st.sidebar:
     run_btn = st.button("🚀 Run Optimization")
 
 # =========================
-# MAIN AREA (RESULTS)
+# MAIN RESULT AREA
 # =========================
 if run_btn:
     if mode == "Single Objective":
         model = ACO_Single(data, ants, iterations, evap)
         price, fitness, history = model.run()
-
         st.subheader("📈 Single Objective Optimization Result")
-
     else:
         model = ACO_Multi(data, ants, iterations, w1, w2, w3, evap)
         price, fitness, history = model.run()
-
         st.subheader("📊 Multi Objective Optimization Result")
 
-    # ---- Results Text ----
-    st.markdown(
-        f"""
-        **Optimal Ticket Price:** RM {price:.2f}  
-        **Fitness Value:** {fitness:.2f}
-        """
-    )
+    # Results text
+    st.markdown(f"""
+    **Optimal Ticket Price:** RM {price:.2f}  
+    **Fitness Value:** {fitness:.2f}
+    """)
 
-    # ---- Convergence Curve ----
-    fig, ax = plt.subplots(figsize=(2, 2.8))
+    # Convergence Curve (KECIL & NGAM)
+    fig, ax = plt.subplots(figsize=(6, 3))
     ax.plot(history)
     ax.set_xlabel("Iteration")
     ax.set_ylabel("Fitness Value")
