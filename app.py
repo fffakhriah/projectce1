@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-from aco_single import aco1
-from aco_multi import aco2
+from aco_single import ACO_Single
+from aco_multi import ACO_Multi
 
 st.title("🎬 Cinema Ticket Pricing Optimization using ACO")
 
