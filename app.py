@@ -60,7 +60,7 @@ if run_btn:
     """)
 
     # Convergence Curve
-        fig, ax = plt.subplots(figsize=(5, 2.5))
+        fig, ax = plt.subplots(figsize=(4, 2.2))
 
         ax.plot(history, linewidth=2)
         
