@@ -1,4 +1,4 @@
-ticket_price,number_of_person,movie_genre,seat_type
+ticket_price,number_of_persons,movie_genre,seat_type
 12.27,7,1,1
 19.02,1,2,1
 22.52,3,3,2
