@@ -10,35 +10,23 @@ class ACO_Single:
         self.iterations = iterations
         self.evap = evap
 
-    def fitness(self, i):
-        # SINGLE OBJECTIVE: MAXIMIZE REVENUE
-        return self.price[i] * self.demand[i]
-
     def run(self):
-        best_price, best_fitness = None, -np.inf
+        best_idx = 0
+        best_fitness = 0
         history = []
 
         for _ in range(self.iterations):
-            selected, fitness_vals = [], []
+            probs = self.pheromone / self.pheromone.sum()
+            choices = np.random.choice(len(self.price), self.ants, p=probs)
 
-            prob = self.pheromone / self.pheromone.sum()
-
-            for _ in range(self.ants):
-                i = np.random.choice(len(self.price), p=prob)
-                f = self.fitness(i)
-
-                selected.append(i)
-                fitness_vals.append(f)
-
-                if f > best_fitness:
-                    best_fitness = f
-                    best_price = self.price[i]
+            for idx in choices:
+                revenue = self.price[idx] * self.demand[idx]
+                if revenue > best_fitness:
+                    best_fitness = revenue
+                    best_idx = idx
 
             self.pheromone *= (1 - self.evap)
-
-            for i, f in zip(selected, fitness_vals):
-                self.pheromone[i] += f / 1000
-
+            self.pheromone[best_idx] += best_fitness / 1000
             history.append(best_fitness)
 
-        return best_price, best_fitness, history
+        return self.price[best_idx], best_fitness, history
