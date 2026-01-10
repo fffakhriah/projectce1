@@ -6,7 +6,7 @@ class ACO_Single:
         self.demand = data['number_of_persons'].values
         self.pheromone = np.ones(len(self.price))
 
-        self.ants = persons
+        self.persons = persons
         self.iterations = iterations
         self.evap = evap
 
