@@ -49,7 +49,7 @@ if run_btn:
         price, fitness, history = model.run()
         st.subheader("📈 Single Objective Optimization Result")
     else:
-        model = ACO_Multi(data, persons, iterations, w1, w2, w3, evap)
+        model = ACO_Multi(data, ants, iterations, w1, w2, w3, evap)
         price, fitness, history = model.run()
         st.subheader("📊 Multi Objective Optimization Result")
 
