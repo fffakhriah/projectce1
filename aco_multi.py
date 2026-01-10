@@ -1,14 +1,14 @@
 import numpy as np
 
 class ACO_Multi:
-    def __init__(self, data, persons=20, iterations=50,
+    def __init__(self, data, ants=20, iterations=50,
                  w1=0.6, w2=0.3, w3=0.1, evap=0.5):
 
         self.price = data['ticket_price'].values
         self.demand = data['number_of_persons'].values
         self.pheromone = np.ones(len(self.price))
 
-        self.persons = persons
+        self.ants = persons
         self.iterations = iterations
         self.w1 = w1
         self.w2 = w2
