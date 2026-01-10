@@ -1,12 +1,12 @@
 import numpy as np
 
 class ACO_Single:
-    def __init__(self, data, persons=20, iterations=50, evap=0.5):
+    def __init__(self, data, ants=20, iterations=50, evap=0.5):
         self.price = data['ticket_price'].values
         self.demand = data['number_of_persons'].values
         self.pheromone = np.ones(len(self.price))
 
-        self.ants = persons
+        self.ants = ants
         self.iterations = iterations
         self.evap = evap
 
@@ -17,7 +17,7 @@ class ACO_Single:
 
         for _ in range(self.iterations):
             probs = self.pheromone / self.pheromone.sum()
-            choices = np.random.choice(len(self.price), self.persons, p=probs)
+            choices = np.random.choice(len(self.price), self.ants, p=probs)
 
             for idx in choices:
                 revenue = self.price[idx] * self.demand[idx]
