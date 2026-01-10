@@ -1,7 +1,7 @@
 import numpy as np
 
 class ACO_Single:
-    def __init__(self, data, ants=20, iterations=50, evap=0.5):
+    def __init__(self, data, persons=20, iterations=50, evap=0.5):
         self.price = data['ticket_price'].values
         self.demand = data['number_of_persons'].values
         self.pheromone = np.ones(len(self.price))
