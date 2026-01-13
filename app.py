@@ -28,7 +28,7 @@ with st.sidebar:
         ["Single Objective", "Multi Objective"]
     )
 
-    ants = st.slider("Number of Persons", 10, 50, 20)
+    ants = st.slider("Number of Ants", 10, 50, 20)
     iterations = st.slider("Iterations", 20, 100, 50)
     evap = st.slider("Evaporation Rate", 0.1, 0.9, 0.5)
 
@@ -46,16 +46,20 @@ with st.sidebar:
 if run_btn:
     if mode == "Single Objective":
         model = ACO_Single(data, ants, iterations, evap)
-        price, fitness, history = model.run()
+        price, customers, fitness, history = model.run()
         st.subheader("📈 Single Objective Optimization Result")
+        st.markdown("**Objective:** Maximize total revenue (up to RM250)")
+
     else:
         model = ACO_Multi(data, ants, iterations, w1, w2, w3, evap)
-        price, fitness, history = model.run()
+        price, customers, fitness, history = model.run()
         st.subheader("📊 Multi Objective Optimization Result")
+        st.markdown("**Objective:** Balance revenue, demand, and ticket price")
 
     # Results text
     st.markdown(f"""
     **Optimal Ticket Price:** RM {price:.2f}  
+    **Number of Customers:** {customers}  
     **Fitness Value:** {fitness:.2f}
     """)
 
