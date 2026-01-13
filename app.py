@@ -48,7 +48,7 @@ if run_btn:
         model = ACO_Single(data, ants, iterations, evap)
         price, customers, fitness, history = model.run()
         st.subheader("📈 Single Objective Optimization Result")
-        st.markdown("**Objective:** Maximize total revenue (up to RM250)")
+        st.markdown("**Objective:** Maximize total revenue")
 
     else:
         model = ACO_Multi(data, ants, iterations, w1, w2, w3, evap)
