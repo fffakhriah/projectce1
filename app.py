@@ -28,7 +28,7 @@ with st.sidebar:
         ["Single Objective", "Multi Objective"]
     )
 
-    ants = st.slider("Number of Ants", 10, 50, 20)
+    ants = st.slider("Number of Persons", 10, 50, 20)
     iterations = st.slider("Iterations", 20, 100, 50)
     evap = st.slider("Evaporation Rate", 0.1, 0.9, 0.5)
 
